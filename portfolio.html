@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Krishna Verma | Backend Engineer</title>
+<meta name="description" content="Krishna Verma is a backend engineer building async APIs and distributed systems with FastAPI, Django and PostgreSQL.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #eef2ef;
+  --panel: #dfe7e2;
+  --ink: #16262b;
+  --muted: #4c6168;
+  --line: #b9c7c0;
+  --accent: #0b6e66;
+  --accent-ink: #ffffff;
+  --code-bg: #16262b;
+  --code-ink: #dbe7e2;
+  --code-key: #7fd6c6;
+  --code-str: #f0c987;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101a1d;
+    --panel: #18262a;
+    --ink: #e4eeea;
+    --muted: #96aaa9;
+    --line: #2b3f44;
+    --accent: #5fd0bf;
+    --accent-ink: #0b1a1d;
+    --code-bg: #0a1215;
+    --code-ink: #cfdcd8;
+    --code-key: #7fd6c6;
+    --code-str: #f0c987;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.6 "Public Sans", system-ui, sans-serif;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+/* top bar */
+.top { border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: center; justify-content: space-between; padding-top: 16px; padding-bottom: 16px; }
+.top strong { font: 700 18px "Bricolage Grotesque", sans-serif; }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.top nav a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px; }
+.top nav a:hover { color: var(--accent); text-decoration: underline; }
+
+/* hero */
+.hero { padding: 72px 0 64px; }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+h1 { font: 800 clamp(48px, 8vw, 88px)/0.98 "Bricolage Grotesque", sans-serif; letter-spacing: -0.03em; margin: 0 0 20px; }
+.lede { font-size: 20px; color: var(--muted); max-width: 32ch; margin: 0 0 28px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-block; padding: 11px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; border: 2px solid var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { color: var(--accent); }
+.btn:hover { filter: brightness(1.1); }
+
+.res { background: var(--code-bg); color: var(--code-ink); border-radius: 10px; overflow: hidden; font: 400 14px/1.7 "IBM Plex Mono", monospace; }
+.res .bar { display: flex; justify-content: space-between; gap: 12px; padding: 10px 18px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.res .ok { color: var(--code-key); font-weight: 500; }
+.res pre { margin: 0; padding: 16px 18px 20px; overflow-x: auto; }
+.k { color: var(--code-key); }
+.s { color: var(--code-str); }
+
+/* sections */
+.block { padding: 64px 0; border-top: 1px solid var(--line); }
+.block .wrap { display: grid; grid-template-columns: 200px 1fr; gap: 40px; }
+h2 { font: 700 28px/1.2 "Bricolage Grotesque", sans-serif; margin: 0; letter-spacing: -0.01em; }
+.block p { margin: 0 0 1em; max-width: 68ch; }
+
+/* skills */
+.skills { margin: 0; display: grid; grid-template-columns: 170px 1fr; gap: 14px 24px; }
+.skills dt { font-weight: 600; }
+.skills dd { margin: 0; color: var(--muted); }
+
+/* projects */
+.project { padding: 0 0 40px; margin: 0 0 40px; border-bottom: 1px solid var(--line); }
+.project:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.project h3 { font: 700 22px/1.25 "Bricolage Grotesque", sans-serif; margin: 0 0 6px; }
+.project .sum { color: var(--muted); margin: 0 0 14px; }
+.project ul { margin: 0 0 16px; padding-left: 20px; max-width: 68ch; }
+.project li { margin-bottom: 8px; }
+.stack { font: 400 13.5px/1.6 "IBM Plex Mono", monospace; color: var(--accent); margin: 0; }
+
+/* education */
+.edu { list-style: none; margin: 0; padding: 0; }
+.edu li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; padding: 0 0 18px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+.edu li:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.edu b { display: block; }
+.edu span { color: var(--muted); }
+.edu .when { text-align: right; }
+
+/* contact + footer */
+.contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.contact-list b { display: inline-block; min-width: 84px; }
+footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 760px) {
+  .hero { padding: 44px 0; }
+  .hero .wrap, .block .wrap { grid-template-columns: 1fr; gap: 24px; }
+  .block { padding: 48px 0; }
+  .skills { grid-template-columns: 1fr; gap: 2px; }
+  .skills dd { margin-bottom: 12px; }
+  .edu .when { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <strong>Krishna Verma</strong>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Introduction">
+    <div class="wrap">
+      <div>
+        <h1>Krishna Verma</h1>
+        <p class="lede">Backend engineer building async APIs, background jobs and fast databases.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">See my projects</a>
+          <a class="btn ghost" href="mailto:sonofamitverma@gmail.com">Email me</a>
+        </div>
+      </div>
+      <div class="res" aria-hidden="true">
+        <div class="bar"><span>GET /engineers/krishna-verma</span><span class="ok">200 OK</span></div>
+<pre>{
+  <span class="k">"role"</span>: <span class="s">"Backend Engineer"</span>,
+  <span class="k">"location"</span>: <span class="s">"Unnao, India"</span>,
+  <span class="k">"languages"</span>: [<span class="s">"Python"</span>, <span class="s">"Java"</span>],
+  <span class="k">"frameworks"</span>: [<span class="s">"FastAPI"</span>, <span class="s">"Django"</span>],
+  <span class="k">"data"</span>: [<span class="s">"PostgreSQL"</span>, <span class="s">"MongoDB"</span>],
+  <span class="k">"focus"</span>: [
+    <span class="s">"async architectures"</span>,
+    <span class="s">"background jobs"</span>,
+    <span class="s">"database optimization"</span>
+  ]
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <div>
+        <p>I'm a backend engineer with experience building distributed systems and RESTful APIs. I specialize in async architectures, background job processing and database optimization using FastAPI, Django and PostgreSQL.</p>
+        <p>I've built real-world applications that handle payment verification, rate limiting and location-based queries, on a foundation of system design, async I/O patterns and containerized deployments.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div>
+        <!-- To link a repo, add: <p><a href="https://github.com/YOUR-USERNAME/REPO">Source code</a></p> inside a project -->
+        <article class="project">
+          <h3>Freelancer Milestone Payment System</h3>
+          <p class="sum">Holds client payments until freelancers complete project milestones.</p>
+          <ul>
+            <li>Built a FastAPI backend where client deposits stay locked until the freelancer completes a milestone.</li>
+            <li>Used PostgreSQL transactions with row-level locking to prevent double-spending when releasing milestone payments.</li>
+            <li>Implemented a dispute resolution workflow: both parties upload evidence and an admin reviews it before funds are released.</li>
+            <li>Automated payment release with Celery tasks, including a 7-day auto-release when the client is unresponsive.</li>
+            <li>Integrated the Razorpay Payout API to send released funds directly to freelancer bank accounts.</li>
+          </ul>
+          <p class="stack">FastAPI, PostgreSQL, Celery, Razorpay</p>
+        </article>
+
+        <article class="project">
+          <h3>API Monetization &amp; Metering Platform</h3>
+          <p class="sum">Tracks API usage and enforces rate limits for developers.</p>
+          <ul>
+            <li>Built a FastAPI proxy that forwards requests to other APIs and logs each call in MongoDB.</li>
+            <li>Optimized rate limiting with Redis, counting requests per API key and blocking keys that hit their limit.</li>
+            <li>Wrote hourly Celery jobs that total API calls for billing.</li>
+            <li>Indexed MongoDB queries on <code>api_key</code> and <code>timestamp</code> so they stay fast with large logs.</li>
+            <li>Used Docker Compose to run FastAPI, MongoDB, Redis and Celery together during development.</li>
+          </ul>
+          <p class="stack">FastAPI, MongoDB, Redis, Celery, Docker Compose</p>
+        </article>
+
+        <article class="project">
+          <h3>Daily Wage Worker Matching Platform API</h3>
+          <p class="sum">Connects day laborers with local employers in real time.</p>
+          <ul>
+            <li>Built a FastAPI backend with endpoints for posting jobs and searching workers by skills and location.</li>
+            <li>Modeled a PostgreSQL schema with SQLAlchemy ORM covering worker profiles, job posts and application history.</li>
+            <li>Added the PostGIS extension to PostgreSQL so workers can find jobs near them.</li>
+            <li>Set up Celery workers to send SMS notifications without slowing down API responses.</li>
+          </ul>
+          <p class="stack">FastAPI, PostgreSQL, PostGIS, SQLAlchemy, Celery</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <dl class="skills">
+        <dt>Languages</dt><dd>Python, Java</dd>
+        <dt>Backend</dt><dd>FastAPI, Django, RESTful APIs</dd>
+        <dt>Databases</dt><dd>PostgreSQL, MongoDB</dd>
+        <dt>Tools</dt><dd>Git, VS Code, Claude</dd>
+        <dt>Used in projects</dt><dd>Celery, Redis, SQLAlchemy, PostGIS, Docker Compose, Razorpay Payout API</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <ul class="edu">
+        <li>
+          <div><b>Chandigarh University, Mohali, Punjab</b><span>Bachelor's, Computer Science and Engineering</span></div>
+          <div class="when"><b>October 2021 – May 2025</b><span>CGPA: 6.78</span></div>
+        </li>
+        <li>
+          <div><b>C.S.A. Inter College, Unnao, Uttar Pradesh</b><span>Class XII</span></div>
+          <div class="when"><b>April 2019 – May 2020</b><span>70.0%</span></div>
+        </li>
+        <li>
+          <div><b>C.S.A. Inter College, Unnao, Uttar Pradesh</b><span>Class X</span></div>
+          <div class="when"><b>April 2017 – May 2018</b><span>86.7%</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div>
+        <p>I'm based in Unnao, Uttar Pradesh. Send me a message about backend work or a project you have in mind.</p>
+        <ul class="contact-list">
+          <li><b>Email</b> <a href="mailto:sonofamitverma@gmail.com">sonofamitverma@gmail.com</a></li>
+          <li><b>Phone</b> <a href="tel:+917379817085">+91 7379817085</a></li>
+          <!-- TODO: replace both URLs below with your real profiles -->
+          <li><b>LinkedIn</b> <a href="https://www.linkedin.com/in/YOUR-LINKEDIN-ID" rel="noopener">linkedin.com/in/YOUR-LINKEDIN-ID</a></li>
+          <li><b>GitHub</b> <a href="https://github.com/YOUR-USERNAME" rel="noopener">github.com/YOUR-USERNAME</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr">2026</span> Krishna Verma</div>
+</footer>
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
